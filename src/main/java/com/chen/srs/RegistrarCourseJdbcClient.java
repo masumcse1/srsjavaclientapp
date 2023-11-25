@@ -11,7 +11,8 @@ public class RegistrarCourseJdbcClient {
     public static void main(String[] args) {
         Connection connection = null;
         try {
-            String url = "jdbc:h2:mem:testdb";
+       
+        	String url = "jdbc:h2:~/Downloads/temp-784/H2_784_DB;DB_CLOSE_DELAY=-1";
             String username = "sa";
             String password = "sa";
             connection = DriverManager.getConnection(url, username, password);
@@ -21,7 +22,7 @@ public class RegistrarCourseJdbcClient {
         }
 
         String courseId = "2";
-        String query = "SELECT COUNT(courseId) FROM REGISTRAR WHERE courseId = ?";
+        String query = "SELECT COUNT(COURSE_ID) FROM REGISTRAR WHERE COURSE_ID = ?";
         int registeredStudents = 0;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
